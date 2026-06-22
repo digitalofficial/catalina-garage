@@ -1,0 +1,7 @@
+import type { Metadata } from "next";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+export const metadata: Metadata = { title: "Privacy Policy | Catalina Garage", description: "Catalina Garage privacy policy." };
+export default function PrivacyPage() {
+  return (<><Header /><main className="mx-auto max-w-3xl px-5 py-16 md:py-24"><h1 className="font-display font-bold text-3xl md:text-4xl tracking-tight mb-8">Privacy Policy</h1><div className="prose prose-sm text-ink/70 leading-relaxed space-y-4"><p>Catalina Garage (&ldquo;we,&rdquo; &ldquo;us&rdquo;) respects your privacy. This policy explains how we collect, use, and protect information submitted through our website.</p><h2 className="font-display font-semibold text-lg text-ink mt-8">Information we collect</h2><p>When you book an appointment, we collect name, phone, email, vehicle info, and message content. We may collect basic analytics through privacy-respecting tools.</p><h2 className="font-display font-semibold text-lg text-ink mt-8">How we use it</h2><p>Your information is used solely to schedule and deliver our services. We do not sell or share your personal information with third parties for marketing.</p><h2 className="font-display font-semibold text-lg text-ink mt-8">Contact</h2><p>Questions? Email hello@catalinagarage.com or call (520) 000-0000.</p></div></main><Footer /></>);
+}

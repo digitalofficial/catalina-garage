@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+body { background: #FBF8F2; color: #1A1A1C; -webkit-font-smoothing: antialiased; }
+
+.eyebrow { letter-spacing: .22em; text-transform: uppercase; font-size: .72rem; font-weight: 600; }
+.chrome-text {
+  background: linear-gradient(180deg, #FFFFFF, #D0D8DE 45%, #8A9AA6);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.pinstripe {
+  height: 3px;
+  background: linear-gradient(90deg,
+    transparent, transparent 2%,
+    #C0392B 2%, #C0392B 48%,
+    transparent 48%, transparent 52%,
+    #C0392B 52%, #C0392B 98%,
+    transparent 98%, transparent
+  );
+}
+.glass { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(6px); }
+
+/* Retro halftone dots */
+.halftone { position: absolute; inset: 0; pointer-events: none; overflow: hidden; opacity: .12; }
+.halftone::before {
+  content: ""; position: absolute; inset: -50%; width: 200%; height: 200%;
+  background-image: radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px);
+  background-size: 12px 12px;
+  transform: rotate(15deg);
+}
+
+/* Racing stripe accent for cards */
+.race-stripe { position: relative; overflow: hidden; }
+.race-stripe::before {
+  content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+  background: linear-gradient(180deg, #C0392B, #45B5AA);
+  border-radius: 0 2px 2px 0;
+}
+
+.card-hover { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.card-hover:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -24px rgba(192,57,43,.4); border-color: rgba(192,57,43,.5); }
+
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); will-change: opacity, transform; }
+.reveal.is-visible { opacity: 1; transform: none; }
+.reveal-scale { opacity: 0; transform: scale(.96); transition: opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1); }
+.reveal-scale.is-visible { opacity: 1; transform: none; }
+
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+.animate-float { animation: float 7s ease-in-out infinite; }
+
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { display: flex; width: max-content; animation: marquee 32s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+.acc-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s cubic-bezier(.22,1,.36,1); }
+.acc-panel.open { grid-template-rows: 1fr; }
+.acc-panel > div { overflow: hidden; }
+
+.btn-lift { transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease; }
+.btn-lift:hover { transform: translateY(-2px); box-shadow: 0 12px 26px -12px rgba(192,57,43,.5); }
+
+/* Retro badge style */
+.badge-retro {
+  display: inline-flex; align-items: center; gap: .5rem;
+  border: 2px solid currentColor; border-radius: 9999px;
+  padding: .35rem 1rem; font-size: .75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .15em;
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid #C0392B; outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float, .marquee-track { animation: none !important; }
+  .reveal, .reveal-scale { opacity: 1 !important; transform: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
