@@ -4,13 +4,20 @@ import { Halftone } from "./Halftone";
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-grease text-white">
-      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 130% 90% at 60% 0%, #3A1518 0%, #2A1215 30%, #1C1C1E 70%)" }} />
+      <div className="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1920&h=1080&fit=crop"
+          alt=""
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 130% 90% at 60% 0%, rgba(58,21,24,0.55) 0%, rgba(42,18,21,0.6) 30%, rgba(28,28,30,0.7) 70%)" }} />
+      </div>
       <Halftone />
       <div className="absolute bottom-0 left-0 right-0 pinstripe" />
 
       <div className="relative mx-auto max-w-6xl px-5 pt-20 pb-24 md:pt-28 md:pb-32">
         <div className="badge-retro text-turq mb-6">Est. Tucson, AZ</div>
-        <h1 className="font-display font-bold tracking-[-0.02em] text-[2.6rem] leading-[1.05] md:text-[4.2rem] max-w-3xl">
+        <h1 className="font-display font-bold tracking-[-0.02em] text-[2.6rem] leading-[1.05] md:text-[4.2rem] max-w-3xl" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.5)" }}>
           Old-school service.<br /><span className="chrome-text">Modern diagnostics.</span>
         </h1>
         <p className="mt-6 max-w-xl text-base md:text-lg text-white/65 leading-relaxed">

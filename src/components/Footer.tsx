@@ -44,6 +44,9 @@ export function Footer() {
             <span>ASE Certified &middot; Family-owned &middot; No B.S.</span>
           </span>
         </div>
+        <div className="mt-4 text-center text-[11px] text-white/25">
+          Built by <a href="https://digitalofficial.com" target="_blank" rel="noopener noreferrer" className="text-white/35 hover:text-cherry transition-colors">Digital Official</a>
+        </div>
       </div>
     </footer>
   );

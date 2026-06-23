@@ -24,6 +24,13 @@ export function Stats() {
             </Reveal>
           ))}
         </div>
+        <Reveal delay={400}>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-semibold text-white/80">
+            <span className="flex items-center gap-2"><span className="inline-block h-2.5 w-2.5 rounded-full bg-turq" /> ASE Certified</span>
+            <span className="flex items-center gap-2"><span className="inline-block h-2.5 w-2.5 rounded-full bg-white/60" /> AAA Approved</span>
+            <span className="flex items-center gap-2"><span className="inline-block h-2.5 w-2.5 rounded-full bg-yellow-400" /> BBB A+ Rated</span>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

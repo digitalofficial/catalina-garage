@@ -12,7 +12,12 @@ export function Reviews() {
     <section id="reviews" className="mx-auto max-w-6xl px-5 py-20 md:py-28">
       <Reveal>
         <p className="eyebrow text-cherry mb-3 text-center">From the parking lot</p>
-        <h2 className="font-display font-bold text-3xl md:text-[2.6rem] tracking-tight leading-tight text-center mb-12">Tucson trusts Catalina Garage.</h2>
+        <h2 className="font-display font-bold text-3xl md:text-[2.6rem] tracking-tight leading-tight text-center mb-4">Tucson trusts Catalina Garage.</h2>
+        <div className="flex items-center justify-center gap-2 mb-12">
+          <span className="text-cherry text-xl tracking-wide">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span className="text-sm font-semibold text-ink/70">4.9 on Google</span>
+          <span className="text-xs text-ink/40">&middot; 200+ reviews</span>
+        </div>
       </Reveal>
       <div className="grid gap-5 md:grid-cols-3">
         {reviews.map((r, i) => (
