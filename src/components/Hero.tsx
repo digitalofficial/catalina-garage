@@ -6,7 +6,7 @@ export function Hero() {
     <section className="relative overflow-hidden bg-grease text-white">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=1920&h=1080&fit=crop"
+          src="/hero-tucson.jpg"
           alt=""
           className="h-full w-full object-cover"
         />
