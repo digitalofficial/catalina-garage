@@ -33,14 +33,12 @@ export default function Home() {
         <Services />
         <TireAnimation
           heading="Brakes you can trust."
-          description="Watch how we handle a brake job — pull the wheel, inspect the rotor and caliper, replace what needs replacing, and bolt it back up. No shortcuts, no upselling. Just honest work."
-          carColor="#C0392B"
+          description="We pull the wheel, inspect the rotor and caliper, replace what needs replacing, and bolt it back up. No shortcuts, no upselling. Just honest work."
         />
         <WhyCatalina />
         <OilChangeAnimation
           heading="Every detail, every time."
           description="Pop the hood, check the dipstick, drain the old stuff, pour in the new. We top off every fluid, swap the filter, and run a 21-point inspection before you get your keys back."
-          carColor="#45B5AA"
           reverse
         />
         <Stats />
