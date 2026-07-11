@@ -18,10 +18,9 @@ export function GarageHero() {
         />
       </div>
 
-      {/* ═══ DIAGONAL MARKER SPEED LINES (thick-to-thin sweeping strokes) ═══ */}
+      {/* ═══ DIAGONAL MARKER SPEED LINES (straight only, no curves) ═══ */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ opacity: 0.12 }} aria-hidden="true">
         <svg viewBox="0 0 1600 900" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
-          {/* Long sweeping diagonal lines - thick to thin like marker drag */}
           <line x1="-100" y1="0" x2="1200" y2="900" stroke="white" strokeWidth="4" strokeLinecap="round" opacity="0.5" />
           <line x1="0" y1="0" x2="1300" y2="900" stroke="white" strokeWidth="2.5" strokeLinecap="round" opacity="0.4" />
           <line x1="100" y1="0" x2="1400" y2="900" stroke="white" strokeWidth="1.5" strokeLinecap="round" opacity="0.35" />
@@ -39,10 +38,9 @@ export function GarageHero() {
         </svg>
       </div>
 
-      {/* ═══ ROUGH HALFTONE DOT GRADIENT (big → small, trailing off) ═══ */}
+      {/* ═══ ROUGH HALFTONE DOT GRADIENT (bottom-right) ═══ */}
       <div className="absolute bottom-0 right-0 pointer-events-none" style={{ opacity: 0.18 }} aria-hidden="true">
         <svg width="600" height="500" viewBox="0 0 600 500">
-          {/* Big dots near corner, getting smaller as they spread */}
           <circle cx="580" cy="480" r="8" fill="white" opacity="0.7" />
           <circle cx="550" cy="460" r="7" fill="white" opacity="0.65" />
           <circle cx="560" cy="430" r="6.5" fill="white" opacity="0.6" />
@@ -65,12 +63,10 @@ export function GarageHero() {
           <circle cx="360" cy="310" r="1.5" fill="white" opacity="0.15" />
           <circle cx="370" cy="270" r="1.5" fill="white" opacity="0.12" />
           <circle cx="340" cy="290" r="1.2" fill="white" opacity="0.1" />
-          <circle cx="350" cy="250" r="1" fill="white" opacity="0.08" />
-          <circle cx="320" cy="270" r="1" fill="white" opacity="0.07" />
         </svg>
       </div>
 
-      {/* ═══ ROUGH HALFTONE DOT GRADIENT (top-left, lighter) ═══ */}
+      {/* ═══ ROUGH HALFTONE DOT GRADIENT (top-left) ═══ */}
       <div className="absolute top-0 left-0 pointer-events-none" style={{ opacity: 0.1 }} aria-hidden="true">
         <svg width="400" height="350" viewBox="0 0 400 350">
           <circle cx="20" cy="20" r="6" fill="white" opacity="0.6" />
@@ -84,12 +80,10 @@ export function GarageHero() {
           <circle cx="110" cy="140" r="2" fill="white" opacity="0.18" />
           <circle cx="145" cy="120" r="2" fill="white" opacity="0.15" />
           <circle cx="135" cy="165" r="1.5" fill="white" opacity="0.12" />
-          <circle cx="170" cy="150" r="1.5" fill="white" opacity="0.1" />
-          <circle cx="160" cy="195" r="1" fill="white" opacity="0.08" />
         </svg>
       </div>
 
-      {/* ═══ X MARKS (hand-drawn marker X's) ═══ */}
+      {/* ═══ X MARKS ═══ */}
       <div className="absolute top-[15%] right-[15%] pointer-events-none" style={{ opacity: 0.15 }} aria-hidden="true">
         <svg width="50" height="50" viewBox="0 0 50 50">
           <line x1="8" y1="8" x2="42" y2="42" stroke="white" strokeWidth="4" strokeLinecap="round" />
@@ -109,35 +103,49 @@ export function GarageHero() {
         </svg>
       </div>
 
-      {/* ═══ ROUGH ARROW (hand-drawn marker style) ═══ */}
-      <div className="hidden md:block absolute bottom-[25%] left-[3%] pointer-events-none" style={{ opacity: 0.12 }} aria-hidden="true">
-        <svg width="80" height="60" viewBox="0 0 80 60">
-          <path d="M5 50 L35 15 L65 50" fill="none" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-          <line x1="35" y1="15" x2="35" y2="55" stroke="white" strokeWidth="4" strokeLinecap="round" />
+      {/* ═══ ROUGH MARKER ARROW (sike_paint style — aggressive, sketchy) ═══ */}
+      <div className="hidden md:block absolute bottom-[22%] left-[3%] pointer-events-none" style={{ opacity: 0.15 }} aria-hidden="true">
+        <svg width="70" height="90" viewBox="0 0 70 90">
+          {/* Main shaft — slightly wobbly like a quick marker stroke */}
+          <line x1="35" y1="5" x2="33" y2="65" stroke="white" strokeWidth="5" strokeLinecap="round" />
+          {/* Arrowhead — two aggressive slashes forming a V */}
+          <line x1="15" y1="50" x2="33" y2="70" stroke="white" strokeWidth="5" strokeLinecap="round" />
+          <line x1="55" y1="50" x2="37" y2="70" stroke="white" strokeWidth="5" strokeLinecap="round" />
+          {/* Extra accent slash next to shaft */}
+          <line x1="42" y1="15" x2="40" y2="40" stroke="white" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
         </svg>
       </div>
 
       {/* ═══ INK DRIP TRAILS ═══ */}
       <div className="absolute top-0 right-[30%] pointer-events-none" style={{ opacity: 0.08 }} aria-hidden="true">
         <svg width="20" height="120" viewBox="0 0 20 120">
-          <path d="M10 0 L10 80 Q10 95 10 100 Q8 110 10 115 Q12 118 10 120" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round" />
-          <circle cx="10" cy="118" r="4" fill="white" />
+          <line x1="10" y1="0" x2="10" y2="95" stroke="white" strokeWidth="3" strokeLinecap="round" />
+          <circle cx="10" cy="112" r="4" fill="white" />
+          <line x1="10" y1="95" x2="10" y2="108" stroke="white" strokeWidth="2" strokeLinecap="round" />
         </svg>
       </div>
       <div className="absolute top-0 right-[45%] pointer-events-none" style={{ opacity: 0.05 }} aria-hidden="true">
         <svg width="16" height="80" viewBox="0 0 16 80">
-          <path d="M8 0 L8 55 Q7 65 8 70 Q9 75 8 78" stroke="white" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-          <circle cx="8" cy="76" r="3" fill="white" />
+          <line x1="8" y1="0" x2="8" y2="58" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+          <circle cx="8" cy="72" r="3" fill="white" />
+          <line x1="8" y1="58" x2="8" y2="69" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
         </svg>
       </div>
 
-      {/* ═══ THICK MARKER OUTLINE STROKES (contour lines) ═══ */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ opacity: 0.06 }} aria-hidden="true">
-        <svg viewBox="0 0 1600 900" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
-          {/* Sweeping contour curves like marker outlines on a car body */}
-          <path d="M0 600 Q400 500 800 550 Q1200 600 1600 500" fill="none" stroke="white" strokeWidth="5" strokeLinecap="round" />
-          <path d="M0 650 Q300 580 700 620 Q1100 660 1600 580" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" />
-          <path d="M0 200 Q500 180 900 220 Q1300 260 1600 200" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" />
+      {/* ═══ SHORT RANDOM ENERGY SLASHES ═══ */}
+      <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.1 }} aria-hidden="true">
+        {/* Short aggressive slash marks at random angles */}
+        <svg className="absolute" style={{ left: "7%", top: "20%" }} width="30" height="35" viewBox="0 0 30 35">
+          <line x1="2" y1="2" x2="28" y2="33" stroke="white" strokeWidth="3.5" strokeLinecap="round" />
+        </svg>
+        <svg className="absolute" style={{ left: "92%", top: "50%" }} width="25" height="30" viewBox="0 0 25 30">
+          <line x1="22" y1="2" x2="3" y2="28" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+        </svg>
+        <svg className="absolute hidden md:block" style={{ left: "50%", top: "8%" }} width="35" height="15" viewBox="0 0 35 15">
+          <line x1="2" y1="12" x2="33" y2="3" stroke="white" strokeWidth="3" strokeLinecap="round" />
+        </svg>
+        <svg className="absolute" style={{ left: "20%", top: "75%" }} width="22" height="28" viewBox="0 0 22 28">
+          <line x1="3" y1="3" x2="19" y2="25" stroke="white" strokeWidth="2" strokeLinecap="round" />
         </svg>
       </div>
 
@@ -149,7 +157,7 @@ export function GarageHero() {
       <div className="relative mx-auto max-w-6xl px-5 py-24 md:py-32 lg:py-40 w-full">
         <div className="max-w-3xl">
 
-          {/* ═══ OVERSIZED YELLOW BADGE ═══ */}
+          {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20, rotate: -4 }}
             animate={{ opacity: 1, y: 0, rotate: -3 }}
@@ -164,14 +172,13 @@ export function GarageHero() {
             </span>
           </motion.div>
 
-          {/* ═══ HEADING ═══ */}
+          {/* Heading */}
           <motion.h1
             className="font-display uppercase text-[3.2rem] leading-[0.88] md:text-[6rem] lg:text-[7.5rem] tracking-tight"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: 0.08 }}
           >
-            {/* "OLD-SCHOOL" — outlined with heavy drop shadow */}
             <span
               className="block relative"
               style={{
@@ -182,14 +189,9 @@ export function GarageHero() {
             >
               Old-School
             </span>
-
-            {/* "SERVICE." — solid on red slab */}
             <span className="block relative">
               <span className="relative inline-block">
-                <span
-                  className="relative z-10"
-                  style={{ textShadow: "4px 4px 0 rgba(0,0,0,0.5)" }}
-                >
+                <span className="relative z-10" style={{ textShadow: "4px 4px 0 rgba(0,0,0,0.5)" }}>
                   Service.
                 </span>
                 <span
@@ -198,8 +200,6 @@ export function GarageHero() {
                 />
               </span>
             </span>
-
-            {/* "MODERN DIAGNOSTICS." — outlined */}
             <span
               className="block text-[0.48em] mt-2"
               style={{
@@ -212,7 +212,7 @@ export function GarageHero() {
             </span>
           </motion.h1>
 
-          {/* ═══ ROUGH SCRIBBLE UNDERLINE ═══ */}
+          {/* Scribble underline */}
           <motion.div
             className="mt-3 mb-7"
             initial={{ opacity: 0, scaleX: 0 }}
@@ -239,7 +239,7 @@ export function GarageHero() {
             would&apos;ve trusted.
           </motion.p>
 
-          {/* CTA */}
+          {/* CTA — phone button now visible by default */}
           <motion.div
             className="mt-10 flex flex-wrap items-center gap-4"
             initial={{ opacity: 0, y: 20 }}
@@ -254,8 +254,8 @@ export function GarageHero() {
             </Link>
             <a
               href="tel:+15200000000"
-              className="btn-manga-outline text-white border-white/30 hover:bg-white hover:text-ink"
-              style={{ boxShadow: "6px 6px 0 rgba(255,255,255,0.1)" }}
+              className="inline-flex items-center gap-2 px-7 py-3.5 font-bold text-[0.9rem] uppercase tracking-[0.06em] border-[3px] border-white bg-white/10 text-white hover:bg-white hover:text-ink transition-colors"
+              style={{ boxShadow: "5px 5px 0 rgba(255,255,255,0.2)" }}
             >
               Call (520) 000-0000
             </a>
@@ -283,7 +283,7 @@ export function GarageHero() {
           </motion.div>
         </div>
 
-        {/* ═══ OVERSIZED "01" ═══ */}
+        {/* Oversized "01" */}
         <div className="hidden lg:block absolute -right-4 top-1/2 -translate-y-1/2 select-none pointer-events-none" aria-hidden="true">
           <span
             className="font-display text-[24rem] leading-none block"
@@ -297,15 +297,22 @@ export function GarageHero() {
           </span>
         </div>
 
-        {/* ═══ ANIMATED ARROW ═══ */}
+        {/* ═══ MARKER ARROW (sike_paint style — rough, hand-drawn, aggressive) ═══ */}
         <motion.div
-          className="hidden md:block absolute right-12 bottom-16 pointer-events-none"
-          animate={{ x: [0, 10, 0] }}
-          transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+          className="hidden md:block absolute right-10 bottom-14 pointer-events-none"
+          animate={{ y: [0, -8, 0] }}
+          transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
           aria-hidden="true"
         >
-          <svg width="70" height="70" viewBox="0 0 70 70" style={{ opacity: 0.2 }}>
-            <path d="M12 35 L50 35 M38 20 L54 35 L38 50" stroke="#FFD600" strokeWidth="5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          <svg width="55" height="80" viewBox="0 0 55 80" style={{ opacity: 0.2 }}>
+            {/* Shaft — quick, slightly off-center like a marker drag */}
+            <line x1="28" y1="5" x2="26" y2="55" stroke="white" strokeWidth="5" strokeLinecap="round" />
+            {/* Left arrowhead slash */}
+            <line x1="10" y1="42" x2="26" y2="60" stroke="white" strokeWidth="5" strokeLinecap="round" />
+            {/* Right arrowhead slash */}
+            <line x1="45" y1="42" x2="28" y2="60" stroke="white" strokeWidth="5" strokeLinecap="round" />
+            {/* Extra accent line (energy mark) */}
+            <line x1="34" y1="12" x2="32" y2="35" stroke="white" strokeWidth="2" strokeLinecap="round" opacity="0.4" />
           </svg>
         </motion.div>
       </div>
