@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { EnergySlashes, EnergyXMarks, BrokenContours, ScribbleHatch, RoughHalftone, MarkerSpeedLines, InkDrips } from "./EnergyMarks";
+import { DarkSectionMarks } from "./EnergyMarks";
 
 const points = [
   { h: "No Upselling, Ever", p: "If it doesn't need fixing, we tell you. We'd rather earn your trust than nickel-and-dime you on a cabin air filter.", accent: "#E63222" },
@@ -19,13 +19,7 @@ const cardVariants = {
 export function WhyCatalina() {
   return (
     <section id="why" className="relative bg-ink text-white overflow-hidden">
-      <MarkerSpeedLines color="white" opacity={0.08} />
-      <RoughHalftone corner="br" color="white" opacity={0.12} />
-      <EnergySlashes color="white" opacity={0.1} variant="alt" />
-      <EnergyXMarks color="white" opacity={0.1} />
-      <BrokenContours color="white" opacity={0.07} />
-      <ScribbleHatch color="white" opacity={0.05} position="tr" />
-      <InkDrips color="white" opacity={0.06} />
+      <DarkSectionMarks variant={0} />
 
       {/* Section number */}
       <div className="absolute -top-6 right-5 md:right-10 font-display text-[8rem] md:text-[12rem] leading-none select-none pointer-events-none" style={{ WebkitTextStroke: "3px rgba(255,255,255,0.04)", color: "transparent" }} aria-hidden="true">

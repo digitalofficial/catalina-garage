@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { EnergySlashes, EnergyXMarks, BrokenContours, ScribbleHatch, RoughHalftone, MarkerSpeedLines, InkDrips } from "./EnergyMarks";
+import { DarkSectionMarks } from "./EnergyMarks";
 
 export function CTASection({
   heading = (<>Your Ride Deserves<br />A Real Mechanic.</>),
@@ -10,13 +10,7 @@ export function CTASection({
 }: { heading?: React.ReactNode; body?: string }) {
   return (
     <section className="relative overflow-hidden bg-ink text-white">
-      <MarkerSpeedLines color="white" opacity={0.07} />
-      <RoughHalftone corner="br" color="white" opacity={0.1} />
-      <EnergySlashes color="white" opacity={0.09} />
-      <EnergyXMarks color="white" opacity={0.08} />
-      <BrokenContours color="white" opacity={0.06} />
-      <ScribbleHatch color="white" opacity={0.04} position="bl" />
-      <InkDrips color="white" opacity={0.05} />
+      <DarkSectionMarks variant={1} />
 
       <div className="relative mx-auto max-w-3xl px-5 py-20 md:py-28 text-center">
         <motion.h2

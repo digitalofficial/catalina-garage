@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Counter } from "./Counter";
-import { EnergySlashes, EnergyXMarks, BrokenContours, RoughHalftone, MarkerSpeedLines } from "./EnergyMarks";
+import { RedSectionMarks } from "./EnergyMarks";
 
 const stats = [
   { to: 10000, suffix: "+", label: "Vehicles Repaired", accent: "#E63222" },
@@ -14,11 +14,7 @@ const stats = [
 export function Stats() {
   return (
     <section className="relative overflow-hidden bg-red text-white">
-      <MarkerSpeedLines color="white" opacity={0.1} flip />
-      <RoughHalftone corner="tl" color="white" opacity={0.1} />
-      <EnergySlashes color="white" opacity={0.12} variant="sparse" />
-      <EnergyXMarks color="white" opacity={0.1} />
-      <BrokenContours color="white" opacity={0.06} />
+      <RedSectionMarks />
 
       <div className="relative mx-auto max-w-6xl px-5 py-16 md:py-20">
         <motion.div

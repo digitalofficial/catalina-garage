@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { RoughHalftone, MarkerSpeedLines } from "./EnergyMarks";
+import { DarkSectionMarks } from "./EnergyMarks";
 
 const brands = [
   { name: "Ford", svg: (<svg viewBox="0 0 80 32" fill="currentColor" className="h-6 md:h-7 w-auto"><text x="40" y="22" textAnchor="middle" fontSize="17" fontWeight="800" fontFamily="system-ui, sans-serif" letterSpacing="-0.5">Ford</text></svg>) },
@@ -25,8 +25,7 @@ const brands = [
 export function BrandLogos() {
   return (
     <section className="bg-ink overflow-hidden relative">
-      <MarkerSpeedLines color="white" opacity={0.05} flip />
-      <RoughHalftone corner="tr" color="white" opacity={0.08} />
+      <DarkSectionMarks variant={2} />
       <div className="h-1.5 bg-red" />
 
       <div className="mx-auto max-w-6xl px-5 py-14 md:py-18 relative">

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { EnergySlashes, BrokenContours, ScribbleHatch, RoughHalftone, MarkerSpeedLines } from "./EnergyMarks";
+import { LightSectionMarks } from "./EnergyMarks";
 
 const reviews = [
   { quote: "Told me my brakes still had 40% life and to come back in six months. Every other shop tried to sell me pads on the spot. That's why I'll never go anywhere else.", who: "Foothills Regular", accent: "#E63222" },
@@ -18,11 +18,7 @@ const cardVariants = {
 export function Reviews() {
   return (
     <section id="reviews" className="relative overflow-hidden">
-      <MarkerSpeedLines color="#0A0A0B" opacity={0.025} flip />
-      <RoughHalftone corner="bl" color="#0A0A0B" opacity={0.04} />
-      <EnergySlashes color="#0A0A0B" opacity={0.035} variant="alt" />
-      <BrokenContours color="#0A0A0B" opacity={0.03} />
-      <ScribbleHatch color="#0A0A0B" opacity={0.025} position="tl" />
+      <LightSectionMarks variant={1} />
 
       {/* Section number */}
       <div className="absolute -top-6 left-5 md:left-10 font-display text-[8rem] md:text-[12rem] leading-none select-none pointer-events-none" style={{ WebkitTextStroke: "2px rgba(10,10,11,0.05)", color: "transparent" }} aria-hidden="true">
