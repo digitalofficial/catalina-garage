@@ -1,4 +1,3 @@
-/** Retro halftone dot overlay for dark hero sections. */
 export function Halftone() {
-  return <div className="halftone" aria-hidden="true" />;
+  return <div className="halftone-dots absolute inset-0" aria-hidden="true" />;
 }

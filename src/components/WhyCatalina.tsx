@@ -1,37 +1,90 @@
+"use client";
+
 import Link from "next/link";
-import { Reveal } from "./Reveal";
-import { Halftone } from "./Halftone";
+import { motion } from "framer-motion";
 
 const points = [
-  { h: "No upselling, ever", p: "If it doesn't need fixing, we tell you. We'd rather earn your trust than nickel-and-dime you on a cabin air filter." },
-  { h: "ASE certified mechanics", p: "Every wrench-turner in our shop is ASE certified, background-checked, and actually likes cars. Wild concept, we know." },
-  { h: "Show-you-the-part honest", p: "We show you the old part, explain what went wrong, and get your approval before any work starts. No surprises on the bill." },
-  { h: "Loaner rides available", p: "Need to get to work? We've got loaner vehicles and a shuttle service so a repair doesn't wreck your whole day." },
+  { h: "No Upselling, Ever", p: "If it doesn't need fixing, we tell you. We'd rather earn your trust than nickel-and-dime you on a cabin air filter.", accent: "#E63222" },
+  { h: "ASE Certified Mechanics", p: "Every wrench-turner in our shop is ASE certified, background-checked, and actually likes cars.", accent: "#FF6B1A" },
+  { h: "Show-You-The-Part Honest", p: "We show you the old part, explain what went wrong, and get your approval before any work starts.", accent: "#FFD600" },
+  { h: "Loaner Rides Available", p: "Need to get to work? We've got loaner vehicles and a shuttle so a repair doesn't wreck your day.", accent: "#E63222" },
 ];
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 25, rotate: -1 },
+  visible: { opacity: 1, y: 0, rotate: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const } },
+};
 
 export function WhyCatalina() {
   return (
-    <section id="why" className="relative bg-grease text-white overflow-hidden">
-      <Halftone />
+    <section id="why" className="relative bg-ink text-white overflow-hidden">
+      {/* Halftone */}
+      <div className="halftone-dots text-white absolute inset-0" />
+
+      {/* Speed lines */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ opacity: 0.03 }}>
+        <svg viewBox="0 0 1200 600" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+          {Array.from({ length: 15 }).map((_, i) => (
+            <line key={i} x1={0} y1={i * 40 + 20} x2={400 + i * 50} y2={i * 40 + 20} stroke="white" strokeWidth={1 + (i % 2)} opacity={0.5} />
+          ))}
+        </svg>
+      </div>
+
+      {/* Section number */}
+      <div className="absolute -top-6 right-5 md:right-10 font-display text-[8rem] md:text-[12rem] leading-none text-white/[0.03] select-none pointer-events-none" aria-hidden="true">
+        03
+      </div>
+
       <div className="relative mx-auto max-w-6xl px-5 py-20 md:py-28">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 items-center">
-          <Reveal>
-            <p className="eyebrow text-turq/90 mb-3">Why Catalina</p>
-            <h2 className="font-display font-bold text-3xl md:text-[2.6rem] tracking-tight leading-tight">The kind of shop they don&apos;t make anymore.</h2>
-            <p className="mt-5 text-white/60 leading-relaxed max-w-md">We built Catalina Garage because Tucson needed a shop with throwback honesty and modern tools. The kind of place where you actually trust the guy handing you the keys back.</p>
-            <Link href="/contact" className="btn-lift mt-8 inline-flex rounded-full bg-cherry px-6 py-3 text-[15px] font-semibold text-white hover:bg-white hover:text-cherry">Book appointment</Link>
-          </Reveal>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="font-marker text-yellow text-lg" style={{ transform: "rotate(-2deg)", display: "inline-block" }}>
+              Why Catalina
+            </span>
+            <h2 className="font-display uppercase text-3xl md:text-[3rem] tracking-tight leading-[0.95] mt-2">
+              The Kind of Shop They Don&apos;t Make Anymore.
+            </h2>
+            <p className="mt-5 text-white/50 leading-relaxed max-w-md">
+              We built Catalina Garage because Tucson needed a shop with throwback honesty and modern tools. The kind of place where you actually trust the guy handing you the keys back.
+            </p>
+            <Link href="/contact" className="btn-manga mt-8 inline-flex">
+              Book Appointment
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </motion.div>
+
+          <motion.div
+            className="grid gap-4 sm:grid-cols-2"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ staggerChildren: 0.08 }}
+          >
             {points.map((pt, i) => (
-              <Reveal key={pt.h} delay={i * 90}>
-                <div className="glass h-full rounded-2xl p-5">
-                  <div className="text-cherry mb-3">&#9679;</div>
-                  <h3 className="font-display font-semibold">{pt.h}</h3>
-                  <p className="mt-1.5 text-sm text-white/55 leading-relaxed">{pt.p}</p>
+              <motion.div key={pt.h} variants={cardVariants}>
+                <div
+                  className="h-full p-5 bg-white/[0.04] border-2 border-white/10 relative overflow-hidden"
+                  style={{ boxShadow: "3px 3px 0 rgba(255,255,255,0.05)" }}
+                >
+                  <span
+                    className="absolute -top-1 -right-1 font-display text-[3rem] leading-none select-none pointer-events-none text-white/[0.04]"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="w-3 h-3 mb-3" style={{ background: pt.accent, transform: "rotate(45deg)" }} />
+                  <h3 className="font-display uppercase text-sm tracking-wide">{pt.h}</h3>
+                  <p className="mt-1.5 text-sm text-white/45 leading-relaxed font-sans">{pt.p}</p>
                 </div>
-              </Reveal>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

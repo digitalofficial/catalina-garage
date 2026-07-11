@@ -1,17 +1,26 @@
 "use client";
 
-import { useEffect, useRef, useState, type ElementType, type ReactNode } from "react";
+import { motion } from "framer-motion";
+import { type ReactNode } from "react";
 
-export function Reveal({ children, as: Tag = "div", delay = 0, scale = false, className = "" }: { children: ReactNode; as?: ElementType; delay?: number; scale?: boolean; className?: string }) {
-  const ref = useRef<HTMLElement | null>(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); io.disconnect(); } }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-  const base = scale ? "reveal-scale" : "reveal";
-  return <Tag ref={ref} className={`${base}${visible ? " is-visible" : ""} ${className}`} style={{ transitionDelay: `${delay}ms` }}>{children}</Tag>;
+interface RevealProps {
+  children: ReactNode;
+  delay?: number;
+  scale?: boolean;
+  className?: string;
+  as?: "div" | "h2" | "p" | "span";
+}
+
+export function Reveal({ children, delay = 0, scale = false, className = "" }: RevealProps) {
+  return (
+    <motion.div
+      className={className}
+      initial={scale ? { opacity: 0, scale: 0.92 } : { opacity: 0, y: 30 }}
+      whileInView={scale ? { opacity: 1, scale: 1 } : { opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-8%" }}
+      transition={{ duration: 0.5, delay: delay / 1000, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
 }

@@ -1,53 +1,146 @@
-import Link from "next/link";
-import { Reveal } from "./Reveal";
+"use client";
 
-const ICON = "h-[22px] w-[22px]";
+import Link from "next/link";
+import { motion } from "framer-motion";
+
 const services = [
-  { title: "Oil Changes & Tune-Ups", body: "Conventional, synthetic, and high-mileage oil. Fluid top-off, filter swap, and a 21-point inspection every time.",
+  {
+    title: "Oil Changes & Tune-Ups",
+    body: "Conventional, synthetic, and high-mileage oil. Fluid top-off, filter swap, and a 21-point inspection every time.",
     img: "/service-oil.jpg",
-    icon: (<svg className={ICON} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3c4 4 7 7 7 11a7 7 0 0 1-14 0c0-4 3-7 7-11z"/></svg>) },
-  { title: "Brakes & Rotors", body: "Pads, rotors, calipers, and fluid flushes. We don't upsell — if it doesn't need replacing, we tell you.",
+    accent: "#E63222",
+  },
+  {
+    title: "Brakes & Rotors",
+    body: "Pads, rotors, calipers, and fluid flushes. We don't upsell — if it doesn't need replacing, we tell you.",
     img: "/service-brakes.jpg",
-    icon: (<svg className={ICON} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>) },
-  { title: "Engine Diagnostics", body: "Check engine light? We read the codes, diagnose the real problem, and explain it in plain English before any wrench turns.",
+    accent: "#FF6B1A",
+  },
+  {
+    title: "Engine Diagnostics",
+    body: "Check engine light? We read the codes, diagnose the real problem, and explain it in plain English.",
     img: "/service-engine.jpg",
-    icon: (<svg className={ICON} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5 5L4 17l3 3 5.7-5.7a4 4 0 0 0 5-5l-2.3 2.3-2.2-.5-.5-2.2 2.3-2.3z"/></svg>) },
-  { title: "AC & Heating", body: "Tucson AC is not optional. Recharges, compressor repair, heater cores, and full climate system diagnostics.",
+    accent: "#E63222",
+  },
+  {
+    title: "AC & Heating",
+    body: "Tucson AC is not optional. Recharges, compressor repair, heater cores, and full climate diagnostics.",
     img: "/service-ac.jpg",
-    icon: (<svg className={ICON} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M3 14c2 0 2-1.5 4.5-1.5S11 14 13 14s2-1.5 4.5-1.5S20 14 21 14"/><path d="M3 18c2 0 2-1.5 4.5-1.5S11 18 13 18s2-1.5 4.5-1.5S20 18 21 18"/><path d="M12 3v6"/></svg>) },
-  { title: "Transmission", body: "Fluid flushes, solenoid replacement, and full rebuilds. Manual and automatic, cars and trucks.",
+    accent: "#FFD600",
+  },
+  {
+    title: "Transmission",
+    body: "Fluid flushes, solenoid replacement, and full rebuilds. Manual and automatic, cars and trucks.",
     img: "/service-transmission.jpg",
-    icon: (<svg className={ICON} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>) },
-  { title: "Tires & Alignment", body: "New tires, rotations, balancing, and 4-wheel alignment. We carry all major brands and match any local price.",
+    accent: "#FF6B1A",
+  },
+  {
+    title: "Tires & Alignment",
+    body: "New tires, rotations, balancing, and 4-wheel alignment. All major brands, price-matched.",
     img: "/service-tires.jpg",
-    icon: (<svg className={ICON} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18M3 12h18"/></svg>) },
+    accent: "#E63222",
+  },
 ];
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.08 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30, rotate: -1 },
+  visible: { opacity: 1, y: 0, rotate: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const } },
+};
 
 export function Services() {
   return (
-    <section id="services" className="mx-auto max-w-6xl px-5 py-20 md:py-28">
-      <Reveal className="flex items-end justify-between gap-6 mb-12">
-        <div>
-          <p className="eyebrow text-cherry mb-3">Under the hood</p>
-          <h2 className="font-display font-bold text-3xl md:text-[2.6rem] tracking-tight max-w-xl leading-tight">If it rolls, we fix it. Simple as that.</h2>
-        </div>
-        <Link href="/services" className="hidden md:inline text-sm font-semibold text-cherry whitespace-nowrap hover:text-turq">All services &rarr;</Link>
-      </Reveal>
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {services.map((s, i) => (
-          <Reveal key={s.title} delay={(i % 3) * 80}>
-            <div className="card-hover race-stripe h-full rounded-2xl border border-ink/[0.08] bg-white overflow-hidden">
-              <div className="h-36 w-full overflow-hidden">
-                <img src={s.img} alt={s.title} className="h-full w-full object-cover" loading="lazy" />
+    <section id="services" className="relative overflow-hidden">
+      {/* Section number */}
+      <div className="absolute -top-6 left-5 md:left-10 font-display text-[8rem] md:text-[12rem] leading-none text-ink/[0.03] select-none pointer-events-none" aria-hidden="true">
+        02
+      </div>
+
+      <div className="mx-auto max-w-6xl px-5 py-20 md:py-28 relative">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14"
+        >
+          <div>
+            <span className="font-marker text-red text-lg" style={{ transform: "rotate(-2deg)", display: "inline-block" }}>
+              Under the hood
+            </span>
+            <h2 className="font-display uppercase text-3xl md:text-[3.2rem] tracking-tight leading-[0.95] mt-2">
+              If It Rolls,<br />
+              <span className="relative inline-block">
+                <span className="relative z-10">We Fix It.</span>
+                <span className="absolute -inset-x-[4%] top-[30%] -bottom-[5%] -z-0 bg-yellow/80" style={{ transform: "rotate(-1deg)" }} />
+              </span>
+            </h2>
+          </div>
+          <Link
+            href="/services"
+            className="btn-manga-outline text-xs py-2 px-4 self-start md:self-auto"
+          >
+            All Services
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </Link>
+        </motion.div>
+
+        <motion.div
+          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-5%" }}
+        >
+          {services.map((s, i) => (
+            <motion.div key={s.title} variants={cardVariants}>
+              <div
+                className="group relative bg-white overflow-hidden card-hover h-full"
+                style={{ border: "3px solid #0A0A0B", boxShadow: "5px 5px 0 #0A0A0B" }}
+              >
+                {/* Large background number */}
+                <span
+                  className="absolute -top-2 -right-1 font-display text-[5rem] leading-none select-none pointer-events-none"
+                  style={{ color: s.accent, opacity: 0.06 }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+
+                {/* Image */}
+                <div className="h-40 w-full overflow-hidden border-b-[3px] border-ink">
+                  <img
+                    src={s.img}
+                    alt={s.title}
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+
+                <div className="relative p-6">
+                  <span
+                    className="inline-flex items-center justify-center w-8 h-8 mb-3 font-display text-xs border-2 border-ink bg-ink text-white"
+                    style={{ transform: "rotate(-3deg)" }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-display text-lg uppercase tracking-tight">{s.title}</h3>
+                  <p className="mt-2 text-sm text-ink/55 leading-relaxed">{s.body}</p>
+                </div>
+
+                {/* Bottom accent */}
+                <div className="h-1" style={{ background: s.accent }} />
               </div>
-              <div className="p-6 pl-8">
-                <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-full border-2 border-cherry/20 text-cherry">{s.icon}</div>
-                <h3 className="font-display font-semibold text-lg">{s.title}</h3>
-                <p className="mt-2 text-sm text-ink/60 leading-relaxed">{s.body}</p>
-              </div>
-            </div>
-          </Reveal>
-        ))}
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

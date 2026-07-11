@@ -1,17 +1,23 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Inter } from "next/font/google";
+import { Anton, Space_Grotesk, Caveat } from "next/font/google";
 import "./globals.css";
 
-const display = Bricolage_Grotesque({
+const display = Anton({
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+  weight: ["400"],
   variable: "--font-display",
   display: "swap",
 });
-const body = Inter({
+const body = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-body",
+  display: "swap",
+});
+const marker = Caveat({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-marker",
   display: "swap",
 });
 
@@ -34,8 +40,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable}`}>
-      <body className="font-sans">{children}</body>
+    <html lang="en" className={`${display.variable} ${body.variable} ${marker.variable}`}>
+      <body className="font-sans bg-paper text-ink antialiased">{children}</body>
     </html>
   );
 }

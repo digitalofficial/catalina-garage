@@ -1,76 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { motion } from "framer-motion";
 
 interface OilChangeAnimationProps {
   heading: string;
   description: string;
-  carColor?: string;
   reverse?: boolean;
 }
 
-export function OilChangeAnimation({
-  heading,
-  description,
-  reverse = false,
-}: OilChangeAnimationProps) {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const mm = gsap.matchMedia();
-
-    mm.add("(min-width: 768px)", () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top 70%",
-          end: "bottom 30%",
-          toggleActions: "play none none reverse",
-        },
-      });
-
-      tl.fromTo(
-        section.querySelector(".work-text"),
-        { opacity: 0, x: reverse ? 60 : -60 },
-        { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" }
-      );
-      tl.fromTo(
-        section.querySelector(".work-image"),
-        { opacity: 0, x: reverse ? -60 : 60, scale: 0.95 },
-        { opacity: 1, x: 0, scale: 1, duration: 0.8, ease: "power3.out" },
-        0.15
-      );
-      tl.fromTo(
-        section.querySelectorAll(".work-step"),
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: "power2.out" },
-        0.4
-      );
-
-      return () => tl.kill();
-    });
-
-    mm.add("(max-width: 767px)", () => {
-      gsap.fromTo(
-        section.querySelector(".work-content"),
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1, y: 0, duration: 0.8,
-          scrollTrigger: { trigger: section, start: "top 80%" },
-        }
-      );
-    });
-
-    return () => mm.revert();
-  }, [reverse]);
-
+export function OilChangeAnimation({ heading, description, reverse = false }: OilChangeAnimationProps) {
   const steps = [
     "Drain old oil & remove filter",
     "Inspect for leaks & wear",
@@ -79,47 +17,77 @@ export function OilChangeAnimation({
   ];
 
   return (
-    <section ref={sectionRef} className="bg-paper overflow-hidden">
-      <div className="work-content mx-auto max-w-6xl px-5 py-20 md:py-28">
+    <section className="bg-paper overflow-hidden relative">
+      <div className="mx-auto max-w-6xl px-5 py-20 md:py-28 relative">
         <div className="grid gap-10 md:gap-16 lg:grid-cols-2 items-center">
           {/* Text */}
-          <div className={`work-text ${reverse ? "lg:order-2" : "lg:order-1"}`}>
-            <p className="eyebrow text-cherry mb-3">How we work</p>
-            <h2 className="font-display font-bold text-3xl md:text-[2.6rem] tracking-tight leading-tight">
+          <motion.div
+            className={reverse ? "lg:order-2" : "lg:order-1"}
+            initial={{ opacity: 0, x: reverse ? 40 : -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="font-marker text-orange text-lg" style={{ transform: "rotate(-2deg)", display: "inline-block" }}>
+              How we work
+            </span>
+            <h2 className="font-display uppercase text-3xl md:text-[2.8rem] tracking-tight leading-[0.95] mt-2">
               {heading}
             </h2>
-            <p className="mt-5 text-ink/60 leading-relaxed max-w-lg">
+            <p className="mt-5 text-ink/55 leading-relaxed max-w-lg">
               {description}
             </p>
             <div className="mt-8 grid grid-cols-2 gap-3">
               {steps.map((step, i) => (
-                <div
+                <motion.div
                   key={step}
-                  className="work-step flex items-start gap-3 rounded-xl border border-ink/[0.06] bg-white p-4"
+                  className="flex items-start gap-3 p-4 bg-white relative"
+                  style={{ border: "2px solid #0A0A0B", boxShadow: "3px 3px 0 #0A0A0B" }}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + i * 0.08, duration: 0.35 }}
                 >
-                  <span className="flex-shrink-0 flex items-center justify-center h-7 w-7 rounded-full bg-cherry/10 text-cherry text-xs font-bold">
+                  <span
+                    className="flex-shrink-0 flex items-center justify-center h-7 w-7 bg-red text-white text-xs font-display"
+                    style={{ transform: "rotate(-3deg)" }}
+                  >
                     {i + 1}
                   </span>
-                  <span className="text-sm font-medium text-ink/70 leading-snug">
+                  <span className="text-sm font-semibold text-ink/65 leading-snug">
                     {step}
                   </span>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Image */}
-          <div className={`work-image ${reverse ? "lg:order-1" : "lg:order-2"}`}>
-            <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-ink/[0.12]">
+          <motion.div
+            className={reverse ? "lg:order-1" : "lg:order-2"}
+            initial={{ opacity: 0, x: reverse ? -40 : 40, scale: 0.95 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div
+              className="relative overflow-hidden"
+              style={{ border: "3px solid #0A0A0B", boxShadow: "6px 6px 0 #0A0A0B" }}
+            >
               <img
                 src="/work-oil.jpg"
                 alt="Mechanic performing oil change"
                 className="w-full h-auto aspect-[4/3] object-cover"
                 loading="lazy"
               />
-              <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-black/[0.08]" />
+              <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.03 }}>
+                <svg viewBox="0 0 400 300" className="w-full h-full" preserveAspectRatio="none">
+                  <line x1="0" y1="0" x2="400" y2="300" stroke="#0A0A0B" strokeWidth="1" />
+                  <line x1="400" y1="0" x2="0" y2="300" stroke="#0A0A0B" strokeWidth="1" />
+                </svg>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
