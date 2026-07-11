@@ -85,20 +85,25 @@ export function GarageHero() {
             </span>
           </motion.h1>
 
-          {/* Scribble underline */}
+          {/* Hand-drawn white marker streak (mark-9) */}
           <motion.div
-            className="mt-3 mb-7"
+            className="mt-4 mb-6 h-9 w-56 md:w-72"
+            style={{
+              backgroundColor: "#FFFFFF",
+              WebkitMaskImage: "url(/art/mark-9.svg)",
+              maskImage: "url(/art/mark-9.svg)",
+              WebkitMaskRepeat: "no-repeat",
+              maskRepeat: "no-repeat",
+              WebkitMaskPosition: "left center",
+              maskPosition: "left center",
+              WebkitMaskSize: "contain",
+              maskSize: "contain",
+            }}
             initial={{ opacity: 0, scaleX: 0 }}
             animate={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.35, delay: 0.25 }}
-            style={{ transformOrigin: "left" }}
+            transition={{ duration: 0.4, delay: 0.25 }}
             aria-hidden="true"
-          >
-            <svg width="320" height="14" viewBox="0 0 320 14" className="w-52 md:w-80">
-              <path d="M2 8 Q25 3 55 9 Q85 14 115 6 Q145 0 175 8 Q205 14 235 5 Q265 0 295 8 Q310 11 318 7" stroke="#E63222" strokeWidth="3.5" fill="none" strokeLinecap="round" />
-              <path d="M5 5 Q35 10 65 4 Q95 0 125 7 Q155 12 185 5 Q215 0 245 6 Q275 11 305 4" stroke="#E63222" strokeWidth="1.5" fill="none" strokeLinecap="round" opacity="0.5" />
-            </svg>
-          </motion.div>
+          />
 
           {/* Sub text */}
           <motion.p
