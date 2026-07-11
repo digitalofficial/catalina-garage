@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { MarkerSpeedLines, RoughHalftone, XMarks, InkDrips } from "./MarkerArt";
 
 const points = [
   { h: "No Upselling, Ever", p: "If it doesn't need fixing, we tell you. We'd rather earn your trust than nickel-and-dime you on a cabin air filter.", accent: "#E63222" },
@@ -18,29 +19,12 @@ const cardVariants = {
 export function WhyCatalina() {
   return (
     <section id="why" className="relative bg-ink text-white overflow-hidden">
-      {/* Screentone */}
-      <div className="screentone text-white absolute inset-0" aria-hidden="true" />
-      {/* Cross-hatch */}
-      <div className="crosshatch text-white absolute inset-0" aria-hidden="true" />
+      <MarkerSpeedLines color="white" opacity={0.08} />
+      <RoughHalftone corner="br" color="white" opacity={0.12} />
+      <XMarks color="white" opacity={0.1} />
+      <InkDrips color="white" opacity={0.06} />
 
-      {/* Speed lines */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ opacity: 0.06 }} aria-hidden="true">
-        <svg viewBox="0 0 1200 600" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
-          {Array.from({ length: 15 }).map((_, i) => (
-            <line key={i} x1={0} y1={i * 40 + 20} x2={400 + i * 50} y2={i * 40 + 20} stroke="white" strokeWidth={1.5 + (i % 3)} opacity={0.6} />
-          ))}
-        </svg>
-      </div>
-
-      {/* Ink slash marks */}
-      <div className="absolute top-8 right-8 pointer-events-none" style={{ opacity: 0.1 }} aria-hidden="true">
-        <svg width="100" height="100" viewBox="0 0 100 100">
-          <line x1="5" y1="5" x2="95" y2="95" stroke="white" strokeWidth="4" strokeLinecap="round" />
-          <line x1="25" y1="2" x2="98" y2="75" stroke="white" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-      </div>
-
-      {/* Section number (outlined) */}
+      {/* Section number */}
       <div className="absolute -top-6 right-5 md:right-10 font-display text-[8rem] md:text-[12rem] leading-none select-none pointer-events-none" style={{ WebkitTextStroke: "3px rgba(255,255,255,0.04)", color: "transparent" }} aria-hidden="true">
         03
       </div>

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Counter } from "./Counter";
+import { MarkerSpeedLines, RoughHalftone, XMarks } from "./MarkerArt";
 
 const stats = [
   { to: 10000, suffix: "+", label: "Vehicles Repaired", accent: "#E63222" },
@@ -13,23 +14,9 @@ const stats = [
 export function Stats() {
   return (
     <section className="relative overflow-hidden bg-red text-white">
-      <div className="screentone text-white absolute inset-0" style={{ opacity: 0.15 }} aria-hidden="true" />
-      <div className="crosshatch text-white absolute inset-0" aria-hidden="true" />
-
-      {/* Ink slash decoration */}
-      <div className="absolute top-4 left-6 pointer-events-none" style={{ opacity: 0.15 }} aria-hidden="true">
-        <svg width="80" height="80" viewBox="0 0 80 80">
-          <line x1="5" y1="5" x2="75" y2="75" stroke="white" strokeWidth="4" strokeLinecap="round" />
-          <line x1="20" y1="2" x2="78" y2="60" stroke="white" strokeWidth="2" strokeLinecap="round" />
-          <line x1="2" y1="25" x2="55" y2="78" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-        </svg>
-      </div>
-      <div className="absolute bottom-4 right-6 pointer-events-none" style={{ opacity: 0.1 }} aria-hidden="true">
-        <svg width="60" height="60" viewBox="0 0 60 60">
-          <line x1="55" y1="5" x2="5" y2="55" stroke="white" strokeWidth="3" strokeLinecap="round" />
-          <line x1="45" y1="2" x2="2" y2="45" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-        </svg>
-      </div>
+      <MarkerSpeedLines color="white" opacity={0.1} flip />
+      <RoughHalftone corner="tl" color="white" opacity={0.1} />
+      <XMarks color="white" opacity={0.12} />
 
       <div className="relative mx-auto max-w-6xl px-5 py-16 md:py-20">
         <motion.div

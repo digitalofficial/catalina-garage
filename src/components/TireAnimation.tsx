@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { MarkerSpeedLines, RoughHalftone } from "./MarkerArt";
 
 interface TireAnimationProps {
   heading: string;
@@ -18,10 +19,10 @@ export function TireAnimation({ heading, description, reverse = false }: TireAni
 
   return (
     <section className="bg-paper overflow-hidden relative">
-      {/* Cross-hatch */}
-      <div className="crosshatch text-ink absolute inset-0" aria-hidden="true" />
+      <MarkerSpeedLines color="#0A0A0B" opacity={0.025} />
+      <RoughHalftone corner="br" color="#0A0A0B" opacity={0.035} />
 
-      {/* Section number (outlined) */}
+      {/* Section number */}
       <div className="absolute -top-6 right-5 md:right-10 font-display text-[8rem] md:text-[12rem] leading-none select-none pointer-events-none" style={{ WebkitTextStroke: "2px rgba(10,10,11,0.05)", color: "transparent" }} aria-hidden="true">
         04
       </div>

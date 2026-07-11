@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { MarkerSpeedLines, RoughHalftone } from "./MarkerArt";
 
 const services = [
   {
@@ -57,10 +58,10 @@ const cardVariants = {
 export function Services() {
   return (
     <section id="services" className="relative overflow-hidden">
-      {/* Cross-hatch shading on light bg */}
-      <div className="crosshatch text-ink absolute inset-0" aria-hidden="true" />
+      <MarkerSpeedLines color="#0A0A0B" opacity={0.03} />
+      <RoughHalftone corner="tr" color="#0A0A0B" opacity={0.04} />
 
-      {/* Section number (outlined) */}
+      {/* Section number */}
       <div className="absolute -top-6 left-5 md:left-10 font-display text-[8rem] md:text-[12rem] leading-none select-none pointer-events-none" style={{ WebkitTextStroke: "2px rgba(10,10,11,0.05)", color: "transparent" }} aria-hidden="true">
         02
       </div>

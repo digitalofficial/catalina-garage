@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { MarkerSpeedLines, RoughHalftone } from "./MarkerArt";
 
 const brands = [
   { name: "Ford", svg: (<svg viewBox="0 0 80 32" fill="currentColor" className="h-6 md:h-7 w-auto"><text x="40" y="22" textAnchor="middle" fontSize="17" fontWeight="800" fontFamily="system-ui, sans-serif" letterSpacing="-0.5">Ford</text></svg>) },
@@ -24,8 +25,8 @@ const brands = [
 export function BrandLogos() {
   return (
     <section className="bg-ink overflow-hidden relative">
-      <div className="screentone text-white absolute inset-0" style={{ opacity: 0.1 }} aria-hidden="true" />
-      <div className="crosshatch text-white absolute inset-0" aria-hidden="true" />
+      <MarkerSpeedLines color="white" opacity={0.05} flip />
+      <RoughHalftone corner="tr" color="white" opacity={0.08} />
       <div className="h-1.5 bg-red" />
 
       <div className="mx-auto max-w-6xl px-5 py-14 md:py-18 relative">
