@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MarkerSpeedLines, RoughHalftone } from "./MarkerArt";
+import { RoughHalftone, MarkerSpeedLines } from "./EnergyMarks";
 
 const brands = [
   { name: "Ford", svg: (<svg viewBox="0 0 80 32" fill="currentColor" className="h-6 md:h-7 w-auto"><text x="40" y="22" textAnchor="middle" fontSize="17" fontWeight="800" fontFamily="system-ui, sans-serif" letterSpacing="-0.5">Ford</text></svg>) },

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { MarkerSpeedLines, RoughHalftone, XMarks, InkDrips } from "./MarkerArt";
+import { EnergySlashes, EnergyXMarks, BrokenContours, ScribbleHatch, RoughHalftone, MarkerSpeedLines, InkDrips } from "./EnergyMarks";
 
 const points = [
   { h: "No Upselling, Ever", p: "If it doesn't need fixing, we tell you. We'd rather earn your trust than nickel-and-dime you on a cabin air filter.", accent: "#E63222" },
@@ -21,7 +21,10 @@ export function WhyCatalina() {
     <section id="why" className="relative bg-ink text-white overflow-hidden">
       <MarkerSpeedLines color="white" opacity={0.08} />
       <RoughHalftone corner="br" color="white" opacity={0.12} />
-      <XMarks color="white" opacity={0.1} />
+      <EnergySlashes color="white" opacity={0.1} variant="alt" />
+      <EnergyXMarks color="white" opacity={0.1} />
+      <BrokenContours color="white" opacity={0.07} />
+      <ScribbleHatch color="white" opacity={0.05} position="tr" />
       <InkDrips color="white" opacity={0.06} />
 
       {/* Section number */}

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MarkerSpeedLines, RoughHalftone } from "./MarkerArt";
+import { EnergySlashes, BrokenContours, RoughHalftone, MarkerSpeedLines } from "./EnergyMarks";
 
 interface TireAnimationProps {
   heading: string;
@@ -21,6 +21,8 @@ export function TireAnimation({ heading, description, reverse = false }: TireAni
     <section className="bg-paper overflow-hidden relative">
       <MarkerSpeedLines color="#0A0A0B" opacity={0.025} />
       <RoughHalftone corner="br" color="#0A0A0B" opacity={0.035} />
+      <EnergySlashes color="#0A0A0B" opacity={0.03} variant="sparse" />
+      <BrokenContours color="#0A0A0B" opacity={0.025} />
 
       {/* Section number */}
       <div className="absolute -top-6 right-5 md:right-10 font-display text-[8rem] md:text-[12rem] leading-none select-none pointer-events-none" style={{ WebkitTextStroke: "2px rgba(10,10,11,0.05)", color: "transparent" }} aria-hidden="true">

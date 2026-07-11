@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MarkerSpeedLines, RoughHalftone } from "./MarkerArt";
+import { EnergySlashes, RoughHalftone, MarkerSpeedLines } from "./EnergyMarks";
 
 interface OilChangeAnimationProps {
   heading: string;
@@ -21,6 +21,7 @@ export function OilChangeAnimation({ heading, description, reverse = false }: Oi
     <section className="bg-paper overflow-hidden relative">
       <MarkerSpeedLines color="#0A0A0B" opacity={0.02} flip />
       <RoughHalftone corner="tl" color="#0A0A0B" opacity={0.03} />
+      <EnergySlashes color="#0A0A0B" opacity={0.03} />
       <div className="mx-auto max-w-6xl px-5 py-20 md:py-28 relative">
         <div className="grid gap-10 md:gap-16 lg:grid-cols-2 items-center">
           {/* Text */}

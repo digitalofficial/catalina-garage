@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { MarkerSpeedLines, RoughHalftone } from "./MarkerArt";
+import { EnergySlashes, BrokenContours, RoughHalftone, MarkerSpeedLines } from "./EnergyMarks";
 
 const services = [
   {
@@ -60,6 +60,8 @@ export function Services() {
     <section id="services" className="relative overflow-hidden">
       <MarkerSpeedLines color="#0A0A0B" opacity={0.03} />
       <RoughHalftone corner="tr" color="#0A0A0B" opacity={0.04} />
+      <EnergySlashes color="#0A0A0B" opacity={0.04} variant="sparse" />
+      <BrokenContours color="#0A0A0B" opacity={0.03} />
 
       {/* Section number */}
       <div className="absolute -top-6 left-5 md:left-10 font-display text-[8rem] md:text-[12rem] leading-none select-none pointer-events-none" style={{ WebkitTextStroke: "2px rgba(10,10,11,0.05)", color: "transparent" }} aria-hidden="true">
