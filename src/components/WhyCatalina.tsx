@@ -18,20 +18,30 @@ const cardVariants = {
 export function WhyCatalina() {
   return (
     <section id="why" className="relative bg-ink text-white overflow-hidden">
-      {/* Halftone */}
-      <div className="halftone-dots text-white absolute inset-0" />
+      {/* Screentone */}
+      <div className="screentone text-white absolute inset-0" aria-hidden="true" />
+      {/* Cross-hatch */}
+      <div className="crosshatch text-white absolute inset-0" aria-hidden="true" />
 
       {/* Speed lines */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ opacity: 0.03 }}>
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ opacity: 0.06 }} aria-hidden="true">
         <svg viewBox="0 0 1200 600" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
           {Array.from({ length: 15 }).map((_, i) => (
-            <line key={i} x1={0} y1={i * 40 + 20} x2={400 + i * 50} y2={i * 40 + 20} stroke="white" strokeWidth={1 + (i % 2)} opacity={0.5} />
+            <line key={i} x1={0} y1={i * 40 + 20} x2={400 + i * 50} y2={i * 40 + 20} stroke="white" strokeWidth={1.5 + (i % 3)} opacity={0.6} />
           ))}
         </svg>
       </div>
 
-      {/* Section number */}
-      <div className="absolute -top-6 right-5 md:right-10 font-display text-[8rem] md:text-[12rem] leading-none text-white/[0.03] select-none pointer-events-none" aria-hidden="true">
+      {/* Ink slash marks */}
+      <div className="absolute top-8 right-8 pointer-events-none" style={{ opacity: 0.1 }} aria-hidden="true">
+        <svg width="100" height="100" viewBox="0 0 100 100">
+          <line x1="5" y1="5" x2="95" y2="95" stroke="white" strokeWidth="4" strokeLinecap="round" />
+          <line x1="25" y1="2" x2="98" y2="75" stroke="white" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      </div>
+
+      {/* Section number (outlined) */}
+      <div className="absolute -top-6 right-5 md:right-10 font-display text-[8rem] md:text-[12rem] leading-none select-none pointer-events-none" style={{ WebkitTextStroke: "3px rgba(255,255,255,0.04)", color: "transparent" }} aria-hidden="true">
         03
       </div>
 
@@ -70,8 +80,8 @@ export function WhyCatalina() {
             {points.map((pt, i) => (
               <motion.div key={pt.h} variants={cardVariants}>
                 <div
-                  className="h-full p-5 bg-white/[0.04] border-2 border-white/10 relative overflow-hidden"
-                  style={{ boxShadow: "3px 3px 0 rgba(255,255,255,0.05)" }}
+                  className="h-full p-5 bg-white/[0.05] border-[2.5px] border-white/15 relative overflow-hidden"
+                  style={{ boxShadow: "5px 5px 0 rgba(255,255,255,0.06)" }}
                 >
                   <span
                     className="absolute -top-1 -right-1 font-display text-[3rem] leading-none select-none pointer-events-none text-white/[0.04]"

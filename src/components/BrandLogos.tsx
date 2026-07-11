@@ -24,8 +24,9 @@ const brands = [
 export function BrandLogos() {
   return (
     <section className="bg-ink overflow-hidden relative">
-      <div className="halftone-dots text-white absolute inset-0" style={{ opacity: 0.03 }} />
-      <div className="h-1 bg-red" />
+      <div className="screentone text-white absolute inset-0" style={{ opacity: 0.1 }} aria-hidden="true" />
+      <div className="crosshatch text-white absolute inset-0" aria-hidden="true" />
+      <div className="h-1.5 bg-red" />
 
       <div className="mx-auto max-w-6xl px-5 py-14 md:py-18 relative">
         <motion.p
@@ -56,7 +57,7 @@ export function BrandLogos() {
         </motion.div>
       </div>
 
-      <div className="h-1 bg-red" />
+      <div className="h-1.5 bg-red" />
     </section>
   );
 }

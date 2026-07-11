@@ -57,8 +57,11 @@ const cardVariants = {
 export function Services() {
   return (
     <section id="services" className="relative overflow-hidden">
-      {/* Section number */}
-      <div className="absolute -top-6 left-5 md:left-10 font-display text-[8rem] md:text-[12rem] leading-none text-ink/[0.03] select-none pointer-events-none" aria-hidden="true">
+      {/* Cross-hatch shading on light bg */}
+      <div className="crosshatch text-ink absolute inset-0" aria-hidden="true" />
+
+      {/* Section number (outlined) */}
+      <div className="absolute -top-6 left-5 md:left-10 font-display text-[8rem] md:text-[12rem] leading-none select-none pointer-events-none" style={{ WebkitTextStroke: "2px rgba(10,10,11,0.05)", color: "transparent" }} aria-hidden="true">
         02
       </div>
 
@@ -104,7 +107,7 @@ export function Services() {
             <motion.div key={s.title} variants={cardVariants}>
               <div
                 className="group relative bg-white overflow-hidden card-hover h-full"
-                style={{ border: "3px solid #0A0A0B", boxShadow: "5px 5px 0 #0A0A0B" }}
+                style={{ border: "3px solid #0A0A0B", boxShadow: "7px 7px 0 #0A0A0B" }}
               >
                 {/* Large background number */}
                 <span

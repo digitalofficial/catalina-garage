@@ -18,8 +18,11 @@ export function TireAnimation({ heading, description, reverse = false }: TireAni
 
   return (
     <section className="bg-paper overflow-hidden relative">
-      {/* Section number */}
-      <div className="absolute -top-6 right-5 md:right-10 font-display text-[8rem] md:text-[12rem] leading-none text-ink/[0.03] select-none pointer-events-none" aria-hidden="true">
+      {/* Cross-hatch */}
+      <div className="crosshatch text-ink absolute inset-0" aria-hidden="true" />
+
+      {/* Section number (outlined) */}
+      <div className="absolute -top-6 right-5 md:right-10 font-display text-[8rem] md:text-[12rem] leading-none select-none pointer-events-none" style={{ WebkitTextStroke: "2px rgba(10,10,11,0.05)", color: "transparent" }} aria-hidden="true">
         04
       </div>
 
@@ -47,7 +50,7 @@ export function TireAnimation({ heading, description, reverse = false }: TireAni
                 <motion.div
                   key={step}
                   className="flex items-start gap-3 p-4 bg-white relative"
-                  style={{ border: "2px solid #0A0A0B", boxShadow: "3px 3px 0 #0A0A0B" }}
+                  style={{ border: "2.5px solid #0A0A0B", boxShadow: "5px 5px 0 #0A0A0B" }}
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -77,20 +80,18 @@ export function TireAnimation({ heading, description, reverse = false }: TireAni
           >
             <div
               className="relative overflow-hidden"
-              style={{ border: "3px solid #0A0A0B", boxShadow: "6px 6px 0 #0A0A0B" }}
+              style={{ border: "3px solid #0A0A0B", boxShadow: "8px 8px 0 #0A0A0B" }}
             >
               <img
                 src="/work-brakes.jpg"
                 alt="Mechanic performing brake work"
                 className="w-full h-auto aspect-[4/3] object-cover"
+                style={{ filter: "contrast(1.1)" }}
                 loading="lazy"
               />
-              {/* Overlay sketch lines */}
-              <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.03 }}>
-                <svg viewBox="0 0 400 300" className="w-full h-full" preserveAspectRatio="none">
-                  <line x1="0" y1="0" x2="400" y2="300" stroke="#0A0A0B" strokeWidth="1" />
-                  <line x1="400" y1="0" x2="0" y2="300" stroke="#0A0A0B" strokeWidth="1" />
-                </svg>
+              {/* Screentone overlay on image */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ opacity: 0.08 }}>
+                <svg width="100%" height="100%"><defs><pattern id="img-tone-1" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><circle cx="2.5" cy="2.5" r="0.8" fill="black" /></pattern></defs><rect width="100%" height="100%" fill="url(#img-tone-1)" /></svg>
               </div>
             </div>
           </motion.div>

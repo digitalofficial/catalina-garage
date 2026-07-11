@@ -13,13 +13,21 @@ const stats = [
 export function Stats() {
   return (
     <section className="relative overflow-hidden bg-red text-white">
-      <div className="halftone-dots text-white absolute inset-0" style={{ opacity: 0.08 }} />
+      <div className="screentone text-white absolute inset-0" style={{ opacity: 0.15 }} aria-hidden="true" />
+      <div className="crosshatch text-white absolute inset-0" aria-hidden="true" />
 
       {/* Ink slash decoration */}
-      <div className="absolute top-4 left-8 pointer-events-none" style={{ opacity: 0.1 }}>
-        <svg width="60" height="60" viewBox="0 0 60 60" aria-hidden="true">
-          <line x1="5" y1="5" x2="55" y2="55" stroke="white" strokeWidth="3" strokeLinecap="round" />
-          <line x1="15" y1="2" x2="58" y2="45" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+      <div className="absolute top-4 left-6 pointer-events-none" style={{ opacity: 0.15 }} aria-hidden="true">
+        <svg width="80" height="80" viewBox="0 0 80 80">
+          <line x1="5" y1="5" x2="75" y2="75" stroke="white" strokeWidth="4" strokeLinecap="round" />
+          <line x1="20" y1="2" x2="78" y2="60" stroke="white" strokeWidth="2" strokeLinecap="round" />
+          <line x1="2" y1="25" x2="55" y2="78" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+        </svg>
+      </div>
+      <div className="absolute bottom-4 right-6 pointer-events-none" style={{ opacity: 0.1 }} aria-hidden="true">
+        <svg width="60" height="60" viewBox="0 0 60 60">
+          <line x1="55" y1="5" x2="5" y2="55" stroke="white" strokeWidth="3" strokeLinecap="round" />
+          <line x1="45" y1="2" x2="2" y2="45" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
       </div>
 

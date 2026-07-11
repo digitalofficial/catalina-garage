@@ -11,12 +11,16 @@ body::after {
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.035;
+  opacity: 0.045;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
   background-size: 256px 256px;
 }
 
-/* ── Text outline (stroke) utility ── */
+/* ══════════════════════════════════
+   SHŌNEN MANGA TEXT EFFECTS
+   ══════════════════════════════════ */
+
+/* Text stroke outlines */
 .text-outline {
   -webkit-text-stroke: 2px white;
   color: transparent;
@@ -26,66 +30,168 @@ body::after {
   color: transparent;
 }
 .text-outline-dark {
-  -webkit-text-stroke: 2px #0A0A0B;
+  -webkit-text-stroke: 2.5px #0A0A0B;
   color: transparent;
 }
 
-/* ── Halftone dot pattern ── */
+/* Heavy manga text shadow (like hand-inked lettering) */
+.manga-text-shadow {
+  text-shadow:
+    3px 3px 0 #0A0A0B,
+    -1px -1px 0 #0A0A0B,
+    1px -1px 0 #0A0A0B,
+    -1px 1px 0 #0A0A0B;
+}
+.manga-text-shadow-white {
+  text-shadow:
+    3px 3px 0 rgba(0,0,0,0.8),
+    4px 4px 0 rgba(0,0,0,0.4),
+    -1px -1px 0 rgba(0,0,0,0.5),
+    1px -1px 0 rgba(0,0,0,0.5);
+}
+
+/* ══════════════════════════════════
+   HALFTONE / SCREENTONE PATTERNS
+   ══════════════════════════════════ */
+
+/* Standard halftone dots */
 .halftone-dots {
   position: absolute; inset: 0; pointer-events: none; overflow: hidden;
-  opacity: 0.1;
+  opacity: 0.14;
 }
 .halftone-dots::before {
   content: ""; position: absolute; inset: -50%; width: 200%; height: 200%;
-  background-image: radial-gradient(circle, currentColor 1.4px, transparent 1.4px);
-  background-size: 10px 10px;
+  background-image: radial-gradient(circle, currentColor 1.6px, transparent 1.6px);
+  background-size: 8px 8px;
   transform: rotate(15deg);
 }
 
-/* ── Ink splatter texture ── */
-.ink-splatter {
-  position: absolute; inset: 0; pointer-events: none;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='40' r='3' fill='%230A0A0B'/%3E%3Ccircle cx='150' cy='20' r='2' fill='%230A0A0B'/%3E%3Ccircle cx='80' cy='120' r='4' fill='%230A0A0B'/%3E%3Ccircle cx='170' cy='160' r='2.5' fill='%230A0A0B'/%3E%3Ccircle cx='50' cy='180' r='1.5' fill='%230A0A0B'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
+/* Dense screentone (manga shading) */
+.screentone {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+  opacity: 0.18;
+}
+.screentone::before {
+  content: ""; position: absolute; inset: -50%; width: 200%; height: 200%;
+  background-image: radial-gradient(circle, currentColor 0.8px, transparent 0.8px);
+  background-size: 4px 4px;
+  transform: rotate(45deg);
 }
 
-/* ── Speed lines (horizontal) ── */
+/* Cross-hatch shading (pen strokes) */
+.crosshatch {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+}
+.crosshatch::before,
+.crosshatch::after {
+  content: ""; position: absolute; inset: 0;
+}
+.crosshatch::before {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 4px,
+    currentColor 4px,
+    currentColor 4.8px
+  );
+  opacity: 0.06;
+}
+.crosshatch::after {
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 6px,
+    currentColor 6px,
+    currentColor 6.6px
+  );
+  opacity: 0.04;
+}
+
+/* ══════════════════════════════════
+   SKETCH LINES & INK EFFECTS
+   ══════════════════════════════════ */
+
+/* Rough sketch border (wobbly hand-drawn look) */
+.sketch-border {
+  border: none;
+  position: relative;
+  isolation: isolate;
+}
+.sketch-border::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  background: #0A0A0B;
+  clip-path: polygon(
+    0.5% 1.2%, 2% 0%, 5% 0.8%, 10% 0.2%, 15% 0.6%, 20% 0%, 25% 0.5%, 30% 0.1%, 35% 0.7%, 40% 0%, 45% 0.4%, 50% 0.1%, 55% 0.6%, 60% 0%, 65% 0.5%, 70% 0.2%, 75% 0.7%, 80% 0%, 85% 0.4%, 90% 0.1%, 95% 0.6%, 98% 0.2%, 99.5% 1%,
+    100% 2%, 99.5% 5%, 100% 10%, 99.6% 15%, 100% 20%, 99.5% 25%, 100% 30%, 99.7% 35%, 100% 40%, 99.5% 45%, 100% 50%, 99.6% 55%, 100% 60%, 99.5% 65%, 100% 70%, 99.7% 75%, 100% 80%, 99.5% 85%, 100% 90%, 99.6% 95%, 99.5% 99%,
+    99% 99.5%, 95% 99.8%, 90% 100%, 85% 99.5%, 80% 100%, 75% 99.6%, 70% 100%, 65% 99.5%, 60% 100%, 55% 99.7%, 50% 100%, 45% 99.5%, 40% 100%, 35% 99.6%, 30% 100%, 25% 99.5%, 20% 100%, 15% 99.7%, 10% 100%, 5% 99.5%, 2% 99.8%, 0.5% 99%,
+    0% 98%, 0.5% 95%, 0% 90%, 0.4% 85%, 0% 80%, 0.5% 75%, 0% 70%, 0.3% 65%, 0% 60%, 0.5% 55%, 0% 50%, 0.4% 45%, 0% 40%, 0.5% 35%, 0% 30%, 0.3% 25%, 0% 20%, 0.5% 15%, 0% 10%, 0.4% 5%, 0.5% 2%
+  );
+}
+
+/* Heavy ink shadow (like manga panel drop shadow) */
+.ink-shadow {
+  box-shadow: 6px 6px 0 #0A0A0B;
+}
+.ink-shadow-heavy {
+  box-shadow: 8px 8px 0 #0A0A0B, 2px 2px 0 #0A0A0B;
+}
+.ink-shadow-red {
+  box-shadow: 6px 6px 0 #E63222;
+}
+
+/* Double-stroke manga panel */
+.manga-panel {
+  border: 3px solid #0A0A0B;
+  position: relative;
+}
+.manga-panel::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1.5px solid rgba(10, 10, 11, 0.12);
+  pointer-events: none;
+}
+.manga-panel::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 1px solid rgba(10, 10, 11, 0.04);
+  pointer-events: none;
+}
+
+/* Speed lines (CSS class version) */
 .speed-lines {
   position: absolute; inset: 0; pointer-events: none; overflow: hidden;
-  opacity: 0.07;
+  opacity: 0.1;
 }
 .speed-lines::before {
   content: ""; position: absolute; inset: 0;
   background: repeating-linear-gradient(
     0deg,
     transparent,
-    transparent 6px,
+    transparent 5px,
+    currentColor 5px,
     currentColor 6px,
-    currentColor 7px,
-    transparent 7px,
-    transparent 18px
+    transparent 6px,
+    transparent 14px
   );
 }
 
-/* ── Rough hand-drawn border simulation ── */
-.rough-border {
-  border: 3px solid #0A0A0B;
-  border-radius: 2px;
-  box-shadow:
-    2px 2px 0 #0A0A0B,
-    -1px -1px 0 transparent;
+/* Ink splatter texture */
+.ink-splatter {
+  position: absolute; inset: 0; pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='40' r='4' fill='%230A0A0B'/%3E%3Ccircle cx='150' cy='20' r='3' fill='%230A0A0B'/%3E%3Ccircle cx='80' cy='120' r='6' fill='%230A0A0B'/%3E%3Ccircle cx='250' cy='60' r='3.5' fill='%230A0A0B'/%3E%3Ccircle cx='170' cy='160' r='4' fill='%230A0A0B'/%3E%3Ccircle cx='50' cy='250' r='2.5' fill='%230A0A0B'/%3E%3Ccircle cx='220' cy='210' r='5' fill='%230A0A0B'/%3E%3Ccircle cx='120' cy='280' r='3' fill='%230A0A0B'/%3E%3Ccircle cx='280' cy='140' r='2' fill='%230A0A0B'/%3E%3Cellipse cx='200' cy='270' rx='8' ry='3' fill='%230A0A0B' transform='rotate(-20 200 270)'/%3E%3C/svg%3E");
+  background-size: 300px 300px;
 }
 
-/* ── Offset shadow (ink block shadow) ── */
-.ink-shadow {
-  box-shadow: 5px 5px 0 #0A0A0B;
-}
-.ink-shadow-red {
-  box-shadow: 5px 5px 0 #E63222;
-}
+/* ══════════════════════════════════
+   SCRIBBLE / SKETCH ACCENTS
+   ══════════════════════════════════ */
 
-/* ── Scribble underline ── */
 .scribble-underline {
   position: relative;
   display: inline-block;
@@ -96,38 +202,29 @@ body::after {
   left: -2%;
   right: -2%;
   bottom: -4px;
-  height: 6px;
-  background: url("data:image/svg+xml,%3Csvg width='120' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 5 Q15 2 30 5 Q45 8 60 4 Q75 1 90 5 Q105 8 118 4' stroke='%23E63222' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x;
+  height: 8px;
+  background: url("data:image/svg+xml,%3Csvg width='120' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 5 Q15 1 30 6 Q45 9 60 3 Q75 0 90 6 Q105 9 118 3' stroke='%23E63222' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x;
   background-size: 120px 8px;
 }
 
-/* ── Section number (oversized) ── */
+/* ══════════════════════════════════
+   SECTION NUMBERS & LAYOUT
+   ══════════════════════════════════ */
+
 .section-number {
   font-family: var(--font-display);
   font-size: clamp(5rem, 12vw, 10rem);
   font-weight: 400;
   line-height: 0.85;
-  color: rgba(10, 10, 11, 0.04);
+  -webkit-text-stroke: 2px rgba(10, 10, 11, 0.06);
+  color: transparent;
   position: absolute;
   top: -0.15em;
   user-select: none;
   pointer-events: none;
 }
 
-/* ── Manga panel border ── */
-.manga-panel {
-  border: 3px solid #0A0A0B;
-  position: relative;
-}
-.manga-panel::before {
-  content: "";
-  position: absolute;
-  inset: 3px;
-  border: 1px solid rgba(10, 10, 11, 0.08);
-  pointer-events: none;
-}
-
-/* ── Paint block accent ── */
+/* Paint block accent */
 .paint-block {
   position: relative;
   z-index: 1;
@@ -136,42 +233,45 @@ body::after {
   content: "";
   position: absolute;
   z-index: -1;
-  top: 30%;
-  left: -4%;
-  right: -4%;
-  bottom: -10%;
+  top: 25%;
+  left: -5%;
+  right: -5%;
+  bottom: -12%;
   background: #FFD600;
   transform: rotate(-1.5deg);
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
-/* ── Sticker badge ── */
+/* Sticker badge */
 .sticker-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.4rem 1rem;
-  font-size: 0.7rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  border: 2.5px solid #0A0A0B;
+  border: 3px solid #0A0A0B;
   background: #FFD600;
   color: #0A0A0B;
   transform: rotate(-2deg);
-  box-shadow: 3px 3px 0 #0A0A0B;
+  box-shadow: 5px 5px 0 #0A0A0B;
 }
 
-/* ── Card hover ── */
+/* ══════════════════════════════════
+   CARDS & INTERACTIVE ELEMENTS
+   ══════════════════════════════════ */
+
 .card-hover {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 .card-hover:hover {
-  transform: translateY(-4px) rotate(0.5deg);
-  box-shadow: 8px 8px 0 #0A0A0B;
+  transform: translateY(-5px) rotate(0.5deg);
+  box-shadow: 10px 10px 0 #0A0A0B;
 }
 
-/* ── Button lift ── */
+/* Manga button (action / shōnen style) */
 .btn-manga {
   display: inline-flex;
   align-items: center;
@@ -184,16 +284,17 @@ body::after {
   border: 3px solid #0A0A0B;
   background: #E63222;
   color: white;
-  box-shadow: 4px 4px 0 #0A0A0B;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 5px 5px 0 #0A0A0B;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
   cursor: pointer;
+  position: relative;
 }
 .btn-manga:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 #0A0A0B;
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0 #0A0A0B;
 }
 .btn-manga:active {
-  transform: translate(2px, 2px);
+  transform: translate(3px, 3px);
   box-shadow: 1px 1px 0 #0A0A0B;
 }
 
@@ -209,34 +310,38 @@ body::after {
   border: 3px solid #0A0A0B;
   background: transparent;
   color: #0A0A0B;
-  box-shadow: 4px 4px 0 #0A0A0B;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  box-shadow: 5px 5px 0 #0A0A0B;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
   cursor: pointer;
 }
 .btn-manga-outline:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 #0A0A0B;
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0 #0A0A0B;
   background: #0A0A0B;
   color: white;
 }
 
-/* ── Marquee ── */
+/* ══════════════════════════════════
+   MARQUEE / ACCORDION / FOCUS
+   ══════════════════════════════════ */
+
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .marquee-track { display: flex; width: max-content; animation: marquee 28s linear infinite; }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 
-/* ── Focus states ── */
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
   outline: 3px solid #E63222;
   outline-offset: 2px;
 }
 
-/* ── Accordion ── */
 .acc-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s cubic-bezier(.22,1,.36,1); }
 .acc-panel.open { grid-template-rows: 1fr; }
 .acc-panel > div { overflow: hidden; }
 
-/* ── Reduced motion ── */
+/* ══════════════════════════════════
+   REDUCED MOTION
+   ══════════════════════════════════ */
+
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none !important; }
   html { scroll-behavior: auto; }

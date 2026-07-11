@@ -18,6 +18,8 @@ export function OilChangeAnimation({ heading, description, reverse = false }: Oi
 
   return (
     <section className="bg-paper overflow-hidden relative">
+      {/* Cross-hatch */}
+      <div className="crosshatch text-ink absolute inset-0" aria-hidden="true" />
       <div className="mx-auto max-w-6xl px-5 py-20 md:py-28 relative">
         <div className="grid gap-10 md:gap-16 lg:grid-cols-2 items-center">
           {/* Text */}
@@ -42,7 +44,7 @@ export function OilChangeAnimation({ heading, description, reverse = false }: Oi
                 <motion.div
                   key={step}
                   className="flex items-start gap-3 p-4 bg-white relative"
-                  style={{ border: "2px solid #0A0A0B", boxShadow: "3px 3px 0 #0A0A0B" }}
+                  style={{ border: "2.5px solid #0A0A0B", boxShadow: "5px 5px 0 #0A0A0B" }}
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -72,19 +74,18 @@ export function OilChangeAnimation({ heading, description, reverse = false }: Oi
           >
             <div
               className="relative overflow-hidden"
-              style={{ border: "3px solid #0A0A0B", boxShadow: "6px 6px 0 #0A0A0B" }}
+              style={{ border: "3px solid #0A0A0B", boxShadow: "8px 8px 0 #0A0A0B" }}
             >
               <img
                 src="/work-oil.jpg"
                 alt="Mechanic performing oil change"
                 className="w-full h-auto aspect-[4/3] object-cover"
+                style={{ filter: "contrast(1.1)" }}
                 loading="lazy"
               />
-              <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.03 }}>
-                <svg viewBox="0 0 400 300" className="w-full h-full" preserveAspectRatio="none">
-                  <line x1="0" y1="0" x2="400" y2="300" stroke="#0A0A0B" strokeWidth="1" />
-                  <line x1="400" y1="0" x2="0" y2="300" stroke="#0A0A0B" strokeWidth="1" />
-                </svg>
+              {/* Screentone overlay */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ opacity: 0.08 }}>
+                <svg width="100%" height="100%"><defs><pattern id="img-tone-2" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><circle cx="2.5" cy="2.5" r="0.8" fill="black" /></pattern></defs><rect width="100%" height="100%" fill="url(#img-tone-2)" /></svg>
               </div>
             </div>
           </motion.div>
